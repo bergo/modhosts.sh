@@ -145,6 +145,12 @@ _checkHost ()
     fi
 }
 
+# checks if a given hostname is registered
+_listHost ()
+{
+    echo "`cat $hostsfile | grep -v "^#" | grep "$comment"`"
+}
+
 # now start the sub - command
 # taken from http://stackoverflow.com/questions/1007538/
 command="$1"
@@ -159,7 +165,7 @@ else
     else
         echo "$this: dont know what to do ..."
     fi
-    echo "  try: add, remove or check"
+    echo "  try: add, remove, check or list"
     exit 1
 fi
 
